@@ -20,7 +20,7 @@ setup(
     entry_points={
         'bandit.plugins': [
             # Register the custom check with Bandit
-            'B901 = custom_checks:enterprise_pii_check',
+            'B901 = security.custom_checks:enterprise_pii_check',
         ],
     },
     classifiers=[

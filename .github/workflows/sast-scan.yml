@@ -36,5 +36,8 @@ jobs:
         run: |
           # Install custom security rule package
           pip install ./SAST/security/
+          
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/SAST
+
           # Run Bandit with custom B901 rule
-          bandit -r SAST/src/ -ll -t B901
+          bandit -r SAST/src/ -ll
