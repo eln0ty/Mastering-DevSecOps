@@ -1,0 +1,15 @@
+flask==2.0.1
+
+# HTTP Library - VULNERABLE VERSION
+# CVE-2023-32681: Unintended leak of Proxy-Authorization header
+# Installed: 2.20.0
+# Safe Version: >= 2.31.0
+requests==2.20.0
+
+sqlalchemy==1.4.20
+stripe==2.60.0
+python-json-logger==2.0.1
+
+# Security Tools (Development)
+bandit==1.7.5
+safety==2.3.5
