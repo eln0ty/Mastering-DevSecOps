@@ -1,4 +1,4 @@
-name: DAST Scan HTML Artifact
+name: DAST Scan
 on: [push]
 
 jobs:
@@ -25,7 +25,6 @@ jobs:
         with:
           target: 'http://localhost:3000'
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Force the output filename to be exactly report.html
           cmd_options: '-r report.html'
 
       - name: Upload HTML Report
@@ -33,5 +32,4 @@ jobs:
         if: always() 
         with:
           name: ZAP-Security-Report
-          # Using wildcard to ensure it finds the file regardless of subfolders
-          path: '**/report.html'
+          path: report.html
