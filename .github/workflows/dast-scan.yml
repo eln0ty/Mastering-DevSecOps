@@ -13,18 +13,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install & Start App
-        working-directory: ./DAST 
-        run: |
-          npm install
-          npm start &
-          npx wait-on http://localhost:3000 --timeout 60000
-
       - name: Run OWASP ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.9.0
+        uses: zaproxy/action-full-scan@v0.13.0
         with:
-          target: 'http://localhost:3000'
+          # Pointing to your live EC2 Public IP
+          target: 'http://18.234.200.202'
           token: ${{ secrets.GITHUB_TOKEN }}
+          # -j generates a JSON report for GitHub Security Tab
+          # -r generates the HTML report
           cmd_options: '-r report.html'
 
       - name: Upload HTML Report
